@@ -13,6 +13,11 @@ local table = {
         name = "KnifeAbilityTest",
         http = "",
         img = ""
+    },
+    {
+        name = "Soon",
+        http = "",
+        img = ""
     }
 }
 
