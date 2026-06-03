@@ -10,3 +10,5 @@ local table = {
         img = ""
     }
 }
+
+return table
