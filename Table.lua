@@ -10,7 +10,7 @@ local table = {
         img = "rbxassetid://95506576932373"
     },
     {
-        name = "KnifeAbilityTest,
+        name = "KnifeAbilityTest",
         http = "",
         img = ""
     }
