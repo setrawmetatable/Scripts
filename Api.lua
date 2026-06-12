@@ -16,13 +16,14 @@ local Api = {
     market = game:GetService("MarketplaceService"),
     rep = game:GetService("ReplicatedStorage"),
     text = game:GetService("TextService"),
-
+    
     player = game:GetService("Players").LocalPlayer,
     name = game:GetService("Players").LocalPlayer.Name,
     camera = workspace.CurrentCamera,
     placeid = game.PlaceId,
     
     mouse = game:GetService("Players").LocalPlayer:GetMouse(),
+    screen = Instance.new("ScreenGui")
 
 }   
 
