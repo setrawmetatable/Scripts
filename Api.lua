@@ -1,6 +1,7 @@
 
 local Protect = loadstring(game:HttpGet("https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/Protect.lua"))()
 local AntiEnv = loadstring(game:HttpGet("https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/AntiEnv.lua"))()
+local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/setrawmetatable/Ui/refs/heads/main/nhack.lua"))()
 
 local Api = {
     players = game:GetService("Players"),
@@ -69,6 +70,10 @@ function Api:GetScript(name)
         return obj
     end
     return nil
+end
+
+function Api:Notification(text, time)
+    Notification:Notification(text, time)
 end
 
 print([[
