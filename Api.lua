@@ -73,6 +73,17 @@ function Api:GetScript(name)
     return nil
 end
 
+function Api:Random()
+	local chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+	local name = ""
+	local lenght = math.random(5, 10)
+	for i = 1, lenght do 
+		local rand = math.random(1, #chars)
+		name = name .. string.sub(chars, rand, rand)
+	end
+	return name
+end
+
 function Api:Notification(text, time)
     Notification:Notification(text, time)
 end
