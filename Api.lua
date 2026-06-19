@@ -142,9 +142,7 @@ function Api:Random()
 end
 
 function Api:Notification(text, time)
-    if Notification and Notification:Notification then
-        Notification:Notification(text, time)
-    end
+    Notification:Notification(text, time)
 end
 
 function Api:JoinDiscord(dscode)
