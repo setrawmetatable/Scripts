@@ -109,6 +109,7 @@ function Api:CheckProtect()
         return true
     else
         return false
+        Api:Kick("[Protect]")
     end
 end
 
