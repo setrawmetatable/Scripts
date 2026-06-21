@@ -108,8 +108,8 @@ function Api:CheckProtect()
     if success and result then
         return true
     else
-        return false
-        Api:Kick("[Protect]")
+		Api:Kick("[Protect]")
+		return false
     end
 end
 
