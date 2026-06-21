@@ -1,24 +1,10 @@
-local table = {
-    {
-        name = "Rost",
-        http = "",
-        img = "rbxassetid://120055599589397"
-    },
+return {
     {
         name = "KAT",
-        http = "",
-        img = "rbxassetid://95851706656471"
+        load = "http",
     },
     {
-        name = "KnifeAbilityTest",
-        http = "",
-        img = ""
-    },
-    {
-        name = "Soon",
-        http = "",
-        img = ""
+        name = "Rost",
+        load = "http",
     }
 }
-
-return table
