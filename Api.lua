@@ -105,6 +105,11 @@ function Api:CheckProtect()
     local success, result = pcall(function()
         return Protect.check(token, exp)
     end)
+    if success and result then
+        return true
+    else
+        return false
+    end
 end
 
 function Api:Kick(text)
