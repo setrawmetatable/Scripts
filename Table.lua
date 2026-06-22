@@ -1,11 +1,11 @@
 return {
     {
         name = "KAT",
-        load = "http",
+        load = "https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/Project%20/KAT.lua",
     },
     {
         name = "Rost",
-        load = "http",
+        load = "https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/Project%20/Rost.lua",
     },
     {
         name = "Vagrant survival",
