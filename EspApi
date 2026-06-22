@@ -1,0 +1,310 @@
+--[[
+    create by scarary
+        https://www.youtube.com/@scarary
+]]
+
+local players = game:GetService("Players")
+local player = players.LocalPlayer
+local run = game:GetService("RunService")
+local camera = workspace.CurrentCamera
+
+local esp = {
+    box = false, 
+    boxcolor = Color3.fromRGB(255,255,255),
+
+    name = false,
+    namecolor = Color3.fromRGB(255,255,255),
+
+    dist = false,
+    distcolor = Color3.fromRGB(255,255,255),
+
+    skeleton = false,
+    skeletoncolor = Color3.fromRGB(255,255,255),
+
+    arrows = false,
+    arrowscolor = Color3.fromRGB(255,255,255),
+
+    healthbar = false,
+
+    distance = 2000,
+}
+
+local cache = {
+    box = {},
+    name = {},
+    dist = {},
+    skeleton = {},
+    health = {},
+}
+
+local function getbox(target)
+    if not cache.box[target] then
+        cache.box[target] = Drawing.new("Square")
+        cache.box[target].Visible = false
+        cache.box[target].Color = esp.boxcolor
+        cache.box[target].Thickness = 1
+        cache.box[target].Filled = false
+        cache.box[target].Transparency = 1
+    end
+    return cache.box[target]
+end
+
+local function getname(target)
+    if not cache.name[target] then
+        cache.name[target] = Drawing.new("Text")
+        cache.name[target].Visible = false
+        cache.name[target].Color = esp.namecolor
+        cache.name[target].Font = 2
+        cache.name[target].Center = true
+        cache.name[target].Outline = true
+        cache.name[target].Size = 12
+    end
+    return cache.name[target]
+end
+
+local function getdist(target)
+    if not cache.dist[target] then
+        cache.dist[target] = Drawing.new("Text")
+        cache.dist[target].Visible = false
+        cache.dist[target].Color = esp.distcolor
+        cache.dist[target].Font = 2
+        cache.dist[target].Center = true
+        cache.dist[target].Outline = true
+        cache.dist[target].Size = 10
+    end
+    return cache.dist[target]
+end
+
+local function getbar(target)
+    if not cache.health[target] then
+        cache.health[target] = {
+            Outline = Drawing.new("Line"),
+            Fill = Drawing.new("Line")
+        }
+
+        cache.health[target].Outline.Visible = false
+        cache.health[target].Outline.Thickness = 3
+        cache.health[target].Outline.Color = Color3.fromRGB(0, 0, 0)
+
+        cache.health[target].Fill.Visible = false
+        cache.health[target].Fill.Thickness = 1.5
+        cache.health[target].Fill.Color = Color3.fromRGB(255, 255, 255)
+    end
+    return cache.health[target]
+end
+
+local function getskeleton(target)
+    if not cache.skeleton[target] then
+        cache.skeleton[target] = {}
+        for i = 1, 10 do 
+            cache.skeleton[target][i] = Drawing.new("Line")
+            cache.skeleton[target][i].Visible = false
+            cache.skeleton[target][i].Thickness = 1
+            cache.skeleton[target][i].Color = esp.skeletoncolor
+        end
+    end
+    return cache.skeleton[target]
+end
+
+local function getpos(part)
+if not part then return nil end
+    local pos, vis = camera:worldToViewportPoint(part.Position)
+        if vis and pos.Z > 0 then
+            return Vector2.new(pos.X, pos.Y)
+        end
+    return nil
+end
+
+run.RenderStepped:Connect(function()
+    for i, v in pairs(players:GetPlayers()) do
+        local box = getbox(v)
+        local name = getname(v)
+        local bar = getbar(v)
+        local skelet = getskeleton(v)
+        local textdist = getdist(v)
+        
+        if player and player.Character and v ~= player and v.Character and v.Character:FindFirstChild("HumanoidRootPart") and v.Character:FindFirstChild("Humanoid") and v.Character:FindFirstChild("Head") and v.Character.Humanoid.Health > 0 then
+            local character = v.Character
+            local humanoid = character.Humanoid
+            local root = character.HumanoidRootPart
+            local head = character.Head
+
+            local pos, screen = camera:WorldToViewportPoint(root.Position)
+            local headpos = camera:WorldToViewportPoint(head.Position + Vector3.new(0, 2, 0))
+            local legpos = camera:WorldToViewportPoint(head.Position + Vector3.new(0, 0.5, 0))
+            local torso = character:FindFirstChild("Torso") or character:FindFirstChild("UpperTorso")
+            local leftArm = character:FindFirstChild("Left Arm") or character:FindFirstChild("LeftUpperArm")
+            local rightArm = character:FindFirstChild("Right Arm") or character:FindFirstChild("RightUpperArm")
+            local leftLeg = character:FindFirstChild("Left Leg") or character:FindFirstChild("LeftUpperLeg")
+            local rightLeg = character:FindFirstChild("Right Leg") or character:FindFirstChild("RightUpperLeg")
+ 
+            local size = 25 / pos.Z * 50
+            local width = size * 2.25 
+            local height = size * 3
+            local boxpos = Vector2.new(pos.X - width / 2, pos.Y - height / 2)
+
+            local white = Color3.fromRGB(255, 255, 255)
+            local black = Color3.fromRGB(0, 0, 0)
+
+            local dist = math.floor((root.Position - player.Character.HumanoidRootPart.Position).Magnitude)
+            local draw = true
+
+            if dist > esp.distance then
+                draw = false
+            end
+
+           if esp.box and screen and pos.Z > 0 and draw then
+                box.Size = Vector2.new(width, height)
+                box.Position = boxpos
+                box.Visible = true
+                box.Color = esp.boxcolor
+            else
+                box.Visible = false
+            end
+
+            if esp.name and screen and pos.Z > 0 then
+                name.Text = v.Name
+                name.Size = 12
+                name.Center = true
+                name.Visible = true
+                name.Color = esp.namecolor
+                name.Position = Vector2.new(boxpos.X + width/2, boxpos.Y - 10)
+            else
+                name.Visible = false
+            end
+
+            if esp.dist and screen and pos.Z > 0 then 
+                textdist.Visible = true
+                textdist.Text = dist
+                textdist.Size = 10
+                textdist.Center = true
+                textdist.Color = esp.distcolor
+                textdist.Position = Vector2.new(boxpos.X + width/2, boxpos.Y + height + 5)
+            else
+                textdist.Visible = false
+            end
+
+            if esp.healthbar and screen and pos.Z > 0 and draw then
+                local health = humanoid.Health
+                local maxhp = humanoid.MaxHealth
+                local percent = math.clamp(health / maxhp, 0, 1)
+                
+                local barX = boxpos.X - 5
+                local barY = boxpos.Y
+
+                bar.Outline.From = Vector2.new(barX, barY)
+                bar.Outline.To = Vector2.new(barX, barY + height)
+                bar.Outline.Visible = true
+                
+                local fillheight = height * percent
+                bar.Fill.From = Vector2.new(barX, barY + height - fillheight)
+                bar.Fill.To = Vector2.new(barX, barY + height)
+                bar.Fill.Visible = true
+                bar.Fill.Color = black:lerp(white, percent)
+            else
+                bar.Outline.Visible = false
+                bar.Fill.Visible = false
+            end
+
+            if esp.skeleton and screen and pos.Z > 0 and draw then
+                local h = getpos(head)
+                local t = torso and getpos(torso)
+                local la = leftArm and getpos(leftArm)
+                local ra = rightArm and getpos(rightArm)
+                local ll = leftLeg and getpos(leftLeg)
+                local rl = rightLeg and getpos(rightLeg)
+                
+                if h and t then
+                    skelet[1].From = h
+                    skelet[1].To = t
+                    skelet[1].Visible = true
+                else
+                    skelet[1].Visible = false
+                end
+                
+                if t and la then
+                    skelet[2].From = t
+                    skelet[2].To = la
+                    skelet[2].Visible = true
+                else
+                    skelet[2].Visible = false
+                end
+                
+                if t and ra then
+                    skelet[3].From = t
+                    skelet[3].To = ra
+                    skelet[3].Visible = true
+                else
+                    skelet[3].Visible = false
+                end
+                
+                if t and ll then
+                    skelet[4].From = t
+                    skelet[4].To = ll
+                    skelet[4].Visible = true
+                else
+                    skelet[4].Visible = false
+                end
+                
+                if t and rl then
+                    skelet[5].From = t
+                    skelet[5].To = rl
+                    skelet[5].Visible = true
+                else
+                    skelet[5].Visible = false
+                end
+                
+                for i = 6, 10 do
+                    skelet[i].Visible = false
+                end
+            else
+                for i, line in pairs(skelet) do
+                    line.Visible = false
+                end
+            end
+        else
+            textdist.Visible = false
+            box.Visible = false
+            name.Visible = false
+            bar.Outline.Visible = false
+            bar.Fill.Visible = false
+            for i, line in pairs(skelet) do
+                line.Visible = false
+            end
+        end
+    end
+end)
+
+players.PlayerRemoving:Connect(function(target)
+    if cache.box[target] then
+        cache.box[target]:Remove()
+        cache.box[target] = nil
+    end
+    if cache.name[target] then
+        cache.name[target]:Remove()
+        cache.name[target] = nil
+    end
+    if cache.dist[target] then
+        cache.dist[target]:Remove()
+        cache.dist[target] = nil
+    end
+    if cache.health[target] then
+        if cache.health[target].Outline then
+            cache.health[target].Outline:Remove()
+        end
+        if cache.health[target].Fill then
+            cache.health[target].Fill:Remove()
+        end
+        cache.health[target] = nil
+    end
+    if cache.skeleton[target] then
+        for i = 1, #cache.skeleton[target] do
+            cache.skeleton[target][i]:Remove()
+        end
+        cache.skeleton[target] = nil
+    end
+end)
+
+
+
+return esp
