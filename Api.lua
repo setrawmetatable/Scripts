@@ -24,55 +24,7 @@ local Api = {
     mobile = game:GetService("UserInputService").TouchEnabled and not game:GetService("UserInputService").MouseEnabled,
     executor = identifyexecutor() or getexecutorname() or "Unknown",
 
-    cache = {
-        players = {},
-        player = {},
-    },
 }  
-
-function Api:UpdateCache()
-    table.clear(Api.cache.players)
-    for i, v in pairs(Api.players:GetPlayers()) do
-        if v ~= Api.player then
-            local character = v.Character
-            if character then
-                local humanoid = character:FindFirstChild("Humanoid")
-                local root = character:FindFirstChild("HumanoidRootPart")
-                local head = character:FindFirstChild("Head")
-                local torso = character:FindFirstChild("Torso")
-                local leftarm = character:FindFirstChild("Left Arm")
-                local rightarm = character:FindFirstChild("Right Arm")
-                local leftleg = character:FindFirstChild("Left Leg")
-                local rightleg = character:FindFirstChild("Right Leg")
-                if humanoid and humanoid.Health ~= 0 and root then 
-                    Api.cache.players[v] = {
-                        character = character,
-                        humanoid = humanoid,
-                        root = root,
-                        head = head,
-                        torso = torso,
-                        leftarm = leftarm,
-                        rightarm = rightarm,
-                        leftleg = leftleg,
-                        rightleg = rightleg,
-                    }
-                end
-            end
-        end
-    end
-    local character = Api.player.Character
-    if not character then
-        Api.cache.player.character = nil
-        Api.cache.player.humanoid = nil
-        Api.cache.player.root = nil
-        Api.cache.player.head = nil
-    else
-        Api.cache.player.character = character
-        Api.cache.player.humanoid = character:FindFirstChild("Humanoid")
-        Api.cache.player.root = character:FindFirstChild("HumanoidRootPart")
-        Api.cache.player.head = character:FindFirstChild("Head")
-    end
-end
 
 local Function = {
     {name = "Drawing", present = type(Drawing) == "table" or type(Drawing) == "userdata"},
@@ -108,8 +60,8 @@ function Api:CheckProtect()
     if success and result then
         return true
     else
-		Api:Kick("[Protect]")
-		return false
+        Api:Kick("[Protect]")
+        return false
     end
 end
 
