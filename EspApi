@@ -183,7 +183,12 @@ run.RenderStepped:Connect(function()
             local white = Color3.fromRGB(255, 255, 255)
             local black = Color3.fromRGB(0, 0, 0)
 
-            local dist = math.floor((root.Position - player.Character.HumanoidRootPart.Position).Magnitude)
+            dist = 1337
+    
+            if root and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                dist = math.floor((root.Position - player.Character.HumanoidRootPart.Position).Magnitude)
+            end
+
             local draw = true
 
             if dist > esp.distance then
@@ -228,7 +233,7 @@ run.RenderStepped:Connect(function()
 
             if esp.dist and screen and pos.Z > 0 then 
                 textdist.Visible = true
-                textdist.Text = dist
+                textdist.Text = tostring(dist)
                 textdist.Size = 10
                 textdist.Center = true
                 textdist.Color = esp.distcolor
