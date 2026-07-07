@@ -4,6 +4,10 @@ return {
         load = "https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/Project%20/KAT.lua",
     },
     {
+        name = "KnifeAbilityTest",
+        load = "https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/Project%20/KnifeAbilityTest.lua",
+    },
+    {
         name = "Rost",
         load = "https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/Project%20/Rost.lua",
     },
