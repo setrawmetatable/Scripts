@@ -46,7 +46,6 @@ function Api:Loadstring(load)
 end
 
 local Protect = Api:Loadstring("https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/Protect.lua")
-local AntiEnv = Api:Loadstring("https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/AntiEnv.lua")
 local Notification = Api:Loadstring("https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/Notification")
 
 function Api:CreateProtect()
