@@ -46,7 +46,7 @@ function Api:Loadstring(load)
 end
 
 local Protect = Api:Loadstring("https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/Protect.lua")
-local Notification = Api:Loadstring("https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/Notification")
+local Notification = Api:Loadstring("https://raw.githubusercontent.com/setrawmetatable/Ui/refs/heads/main/Notification.lua")
 
 function Api:CreateProtect()
     getgenv().token, exp = Protect.generate()
