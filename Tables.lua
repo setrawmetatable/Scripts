@@ -2,7 +2,7 @@
 
 local _V = {
   Message = {
-    "[Nigalose] Connected",
+    "[+] Nigalose connected",
     "Welcome back",
   },
   Scripts = {
