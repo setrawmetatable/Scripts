@@ -6,11 +6,13 @@ local _V = {
   Scripts = {
     {
       Name = "Rost Alpha",
-      Load = "https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/Project%20/Rost.lua"
+      Load = "https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/Project%20/Rost.lua",
+      Time = "Updated: 2026/01/01 12:00 AM",
     },
     {
       Name = "KAT",
-      Load = "https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/Project%20/KAT.lua"
+      Load = "https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/Project%20/KAT.lua",
+      Time = "Updated: 2026/01/01 12:00 AM",
     },
   },
 }
