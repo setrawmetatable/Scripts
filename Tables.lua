@@ -16,7 +16,7 @@ local _V = {
       Name = "KAT",
       Load = "https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/Project%20/KAT.lua",
       Time = "Updated: 2026/01/01 12:00 AM",
-      Stat = "Udt"
+      Stat = "Dtc"
     },
   },
   Work = true,
