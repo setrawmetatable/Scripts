@@ -8,15 +8,15 @@ local _V = {
   Scripts = {
     {
       Name = "Rost Alpha",
-      Load = "https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/Project%20/Rost.lua",
-      Time = "Updated: 2026/01/01 12:00 AM",
+      Load = "https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/Project/Rost.lua",
+      Time = "Updated: 2026/08/18 03:00 AM",
       Stat = "Udt"
     },
     {
-      Name = "KAT",
-      Load = "https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/Project%20/KAT.lua",
-      Time = "Updated: 2026/01/01 12:00 AM",
-      Stat = "Dtc"
+      Name = "Westbound",
+      Load = "https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/Project/Westbound.lua",
+      Time = "Updated: 2026/08/18 03:00 AM",
+      Stat = "Udt"
     },
   },
   Work = true,
