@@ -20,7 +20,7 @@ local _V = {
     },
     {
       Name = "Vagrant Survival",
-      Load = "https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/Project/Vagrant.lua",
+      Load = "https://api.getpolsec.com/scripts/hosted/41a515cba1bcafcfb3a8580a138dba6bc3051ebd82274f0a78ebb12230709b0d.lua",
       Time = "Updated: 2026/08/23 02:00 PM",
       Stat = "Udt",
     },
