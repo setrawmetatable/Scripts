@@ -14,7 +14,7 @@ local _V = {
     },
     {
       Name = "Westbound",
-      Load = "https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/Project/Westbound.lua",
+      Load = "https://api.getpolsec.com/scripts/hosted/d232ff3a085271459dde59be0c0fa3f1fd0c85b7feb2d59e4d6ee9cc650cdd26.lua",
       Time = "Updated: 2026/08/18 03:00 AM",
       Stat = "Udt"
     },
