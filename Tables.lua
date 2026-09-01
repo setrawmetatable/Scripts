@@ -21,7 +21,7 @@ local _V = {
     {
       Name = "Vagrant Survival",
       Load = "https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/Project/Vagrant.lua",
-      Time = "Updated: 2026/08/23 02:00 PM",
+      Time = "Updated: 2026/09/01 02:10 AM",
       Stat = "Udt",
     },
   },
