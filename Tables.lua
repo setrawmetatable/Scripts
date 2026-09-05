@@ -24,12 +24,6 @@ local _V = {
       Time = "Updated: 2026/09/01 02:10 AM",
       Stat = "Udt",
     },
-    {
-      Name = "KatX",
-      Load = "https://raw.githubusercontent.com/setrawmetatable/Scripts/refs/heads/main/Project/Katx"
-      Time = "Updated: 2026/09/05 05:30 PM",
-      Stat = "Udt",
-    }
   },
   Work = true,
 }
